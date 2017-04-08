@@ -37,8 +37,8 @@ Nodo* popCola(Cola* p){
     return aux;
 }
 
-Nodo* topPila(Cola* p){
-    return p->fin;
+Nodo* topCola(Cola* p){
+    return p->primero;
 }
 
 Cola* invertirCola(Cola* c){
