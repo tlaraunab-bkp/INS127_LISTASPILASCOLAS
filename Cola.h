@@ -6,31 +6,46 @@ typedef struct {
     int tam;
 } Cola;
 
-Lista* crearCola(){
+Cola* crearCola(){
     Cola* aux;
     aux = (Cola*) malloc(sizeof(Cola));
     aux->tam = 0;
-}
-
-void agregarNodoCola(Cola* l, Nodo* n){
-    
-    if(l->tam == 0){
-        l->primero = n;
-        l->fin = n;
-    } else {
-        n->sig = l->primero;
-        l->primero = n;
-    }
-    l->tam++;
-    
-}
-
-Nodo* popPila(Pila* p){
-    Nodo* aux = p->fin;
-    p->fin = aux->sig;
     return aux;
 }
 
-Nodo* topPila(Pila* p){
+void agregarNodoCola(Cola* c, Nodo* n){
+    if(c->tam == 0){
+        c->primero = n;
+        c->fin = n;
+    }else{
+        c->fin->sig = n;
+        c->fin = n;
+    }
+    c->tam++;
+}
+
+Nodo* popCola(Cola* p){
+    
+    Nodo* aux = p->primero;
+    p->primero = aux->sig;
+    p->tam--;
+    
+    if(p->tam == 0){ //Si la cola quedó vacía
+        p->fin = NULL; //Eliminamos la referencia al último Nodo
+    }
+    
+    return aux;
+}
+
+Nodo* topPila(Cola* p){
     return p->fin;
+}
+
+Cola* invertirCola(Cola* c){
+    if(c->tam > 0){
+        Nodo* tope = popCola(c);
+        c = invertirCola(c);
+        agregarNodoCola(c, tope);
+    }
+    return c;
 }

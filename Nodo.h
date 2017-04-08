@@ -7,7 +7,7 @@ typedef struct Nodo {
 
 Nodo* crearNodo(){
     Nodo* aux;
-    aux = (Nodo *) malloc(size(Nodo));
+    aux = (Nodo *) malloc(sizeof(Nodo));
     aux->dato = 0;
     
     return aux;
@@ -17,9 +17,8 @@ int getDatoNodo(Nodo* n){
     return n->dato;
 }
 
-Nodo* setDatoNodo(Nodo* n, int dato){
+void setDatoNodo(Nodo* n, int dato){
     n->dato = dato;
-    return n;
 }
 
 void setSiguienteNodo(Nodo* n, Nodo* sig){

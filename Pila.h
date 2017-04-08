@@ -5,10 +5,11 @@ typedef struct {
     int tam;
 } Pila;
 
-Lista* crearPila(){
+Pila* crearPila(){
     Pila* aux;
     aux = (Pila*) malloc(sizeof(Pila));
     aux->tam = 0;
+    return aux;
 }
 
 void agregarNodoPila(Pila* l, Nodo* n){
